@@ -1,134 +1,99 @@
 "use client";
 import React, { useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim";
-import { Typewriter } from "react-simple-typewriter";
 import Lottie from "lottie-react";
+import { Typewriter } from "react-simple-typewriter";
 import animationData from "../../public/hero.json";
 
-const Hero = () => {
-  const particlesInit = useCallback(async (engine) => {
-    // Load the slim version for better performance
-    await loadSlim(engine);
+// Optimized Particles component - Much lighter
+const Particles = () => {
+  // Reduced particle count for better performance
+  const particles = useMemo(() => {
+    return Array.from({ length: 25 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+    }));
   }, []);
 
-  const particlesOptions = useMemo(() => ({
-    background: {
-      color: {
-        value: "transparent",
-      },
-    },
-    fullScreen: {
-      enable: false,
-      zIndex: 0,
-    },
-    fpsLimit: 120,
-    interactivity: {
-      events: {
-        onClick: {
-          enable: true,
-          mode: "push",
-        },
-        onHover: {
-          enable: true,
-          mode: "repulse",
-        },
-        resize: true,
-      },
-      modes: {
-        push: {
-          quantity: 4,
-        },
-        repulse: {
-          distance: 200,
-          duration: 0.4,
-        },
-      },
-    },
-    particles: {
-      color: {
-        value: ["#ffffff", "#3b82f6", "#06b6d4", "#f59e0b"],
-      },
-      links: {
-        color: "#3b82f6",
-        distance: 120,
-        enable: true,
-        opacity: 0.1,
-        width: 0.5,
-      },
-      move: {
-        direction: "none",
-        enable: true,
-        outModes: {
-          default: "out",
-        },
-        random: true,
-        speed: 0.5,
-        straight: false,
-      },
-      number: {
-        density: {
-          enable: true,
-          area: 1000,
-        },
-        value: 60,
-      },
-      opacity: {
-        value: { min: 0.3, max: 1 },
-        animation: {
-          enable: true,
-          speed: 2,
-          minimumValue: 0.1,
-          sync: false,
-        },
-      },
-      shadow: {
-        enable: true,
-        color: "#3b82f6",
-        blur: 5,
-      },
-      shape: {
-        type: "circle",
-      },
-      size: {
-        value: { min: 1, max: 4 },
-        animation: {
-          enable: true,
-          speed: 3,
-          minimumValue: 0.5,
-          sync: false,
-        },
-      },
-      twinkle: {
-        particles: {
-          enable: true,
-          frequency: 0.05,
-          opacity: 1,
-        },
-      },
-    },
-    detectRetina: true,
-  }), []);
+  const lines = useMemo(() => {
+    return Array.from({ length: 6 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+    }));
+  }, []);
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-20 py-12 lg:py-20 overflow-hidden pt-28 bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0a0f1f] isolate">
-      
-      {/* React TSParticles Background - Strictly contained within hero */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <Particles
-          id="hero-particles"
-          init={particlesInit}
-          options={particlesOptions}
-          className="w-full h-full pointer-events-none"
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Optimized floating particles */}
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute bg-blue-400/40 rounded-full"
+          style={{
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+          }}
+          animate={{
+            y: [-20, 20, -20],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 8 + Math.random() * 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: Math.random() * 5,
+          }}
         />
-      </div>
+      ))}
+
+      {/* Simplified connecting lines */}
+      {lines.map((line) => (
+        <motion.div
+          key={`line-${line.id}`}
+          className="absolute h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent"
+          style={{
+            width: '150px',
+            left: `${line.x}%`,
+            top: `${line.y}%`,
+          }}
+          animate={{
+            opacity: [0, 0.4, 0],
+            scaleX: [0, 1, 0],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: Math.random() * 3,
+          }}
+        />
+      ))}
+
+      {/* Static background glow - no animation for performance */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/5 rounded-full blur-xl"></div>
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-cyan-400/5 rounded-full blur-xl"></div>
+      <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-purple-500/5 rounded-full blur-lg"></div>
+    </div>
+  );
+};
+
+const Hero = () => {
+  return (
+    <section className="relative min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-20 py-12 lg:py-20 overflow-hidden pt-28 bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0a0f1f]">
+      
+      {/* Optimized Particles Background */}
+      <Particles />
       
       {/* Decorative background glow */}
-      {/* <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] bg-cyan-500/20 rounded-full blur-3xl"></div>
-      </div> */}
+      </div>
 
       {/* Left Content */}
       <motion.div
@@ -164,7 +129,7 @@ const Hero = () => {
           className="text-base md:text-lg lg:text-xl text-gray-300 max-w-xl mx-auto lg:mx-0"
         >
           From strategy to execution,{" "}
-          <span className="text-blue-400 font-semibold">Pixvision</span>{" "}
+          <span className="text-blue-400 font-semibold">Pixvion</span>{" "}
           delivers smart, scalable, and future-ready IT solutions that empower
           businesses worldwide.
         </motion.p>

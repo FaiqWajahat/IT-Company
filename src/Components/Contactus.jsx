@@ -136,7 +136,7 @@ const Contactus = () => {
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
                 viewport={{ once: true }}
-                className="inline-block mr-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"
+                className="inline-block mr-4 bg-black bg-clip-text text-transparent"
               >
                 {word}
               </motion.span>
@@ -148,7 +148,7 @@ const Contactus = () => {
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full shadow-lg origin-center mb-6"
+            className="h-1 w-48 mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full shadow-lg origin-center mb-6"
           />
 
           <motion.p
@@ -419,7 +419,7 @@ const Contactus = () => {
           {/* Contact Info - Right Side */}
           <div className='lg:col-span-1'>
             <motion.div 
-              className='rounded-3xl bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 shadow-2xl text-white p-6 relative overflow-hidden h-full'
+              className='rounded-3xl bg-blue-700 shadow-2xl text-white p-6 relative overflow-hidden h-full'
               whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
             >
               {/* Background decorative elements */}

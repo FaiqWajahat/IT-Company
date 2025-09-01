@@ -16,9 +16,10 @@ export default function Home() {
 <About/>
 <Services/>
 <Client/>
-<Testimonial/>
+
 <Projects/>
 <Technologies/>
+<Testimonial/>
 <Contactus/>
    </>
   );

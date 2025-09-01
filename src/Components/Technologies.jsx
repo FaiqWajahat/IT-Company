@@ -3,15 +3,17 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { 
   Code, 
-  Smartphone, 
+   
   Database, 
   Cloud, 
   Shield, 
-  Zap,
+
   Globe,
   Brain,
-  Layers,
-  Settings
+ 
+
+  FileImage,
+  CircleDollarSign
 } from 'lucide-react'
 
 const Technologies = () => {
@@ -31,45 +33,45 @@ const Technologies = () => {
       id: 'backend',
       name: 'Backend',
       icon: Database,
-      color: 'text-emerald-600',
-      bgColor: 'bg-emerald-50',
-      borderColor: 'border-emerald-200',
+     color: 'text-blue-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
       description: 'Robust server-side solutions'
     },
     {
       id: 'mobile',
-      name: 'Mobile',
-      icon: Smartphone,
-      color: 'text-purple-600',
-      bgColor: 'bg-purple-50',
-      borderColor: 'border-purple-200',
-      description: 'Cross-platform mobile applications'
+      name: 'Graphics',
+      icon: FileImage,
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
+      description: 'Graphic Designing Software'
     },
     {
       id: 'cloud',
       name: 'Cloud & DevOps',
       icon: Cloud,
-      color: 'text-cyan-600',
-      bgColor: 'bg-cyan-50',
-      borderColor: 'border-cyan-200',
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
       description: 'Scalable cloud infrastructure'
     },
     {
       id: 'ai',
-      name: 'AI & ML',
-      icon: Brain,
-      color: 'text-orange-600',
-      bgColor: 'bg-orange-50',
-      borderColor: 'border-orange-200',
-      description: 'Intelligent automation solutions'
+      name: 'Payment Integration',
+      icon: CircleDollarSign,
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
+      description: 'Payment Integration Technologies'
     },
     {
       id: 'security',
       name: 'Security',
       icon: Shield,
-      color: 'text-red-600',
-      bgColor: 'bg-red-50',
-      borderColor: 'border-red-200',
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
       description: 'Enterprise-grade security'
     }
   ]
@@ -222,16 +224,7 @@ ai: [
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <motion.div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 font-medium text-sm mb-6"
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <Code className="w-4 h-4" />
-          Our Tech Stack
-        </motion.div>
+     
 
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
           {["Technologies", "We", "Use"].map((word, index) => (
@@ -257,7 +250,7 @@ ai: [
           whileInView={{ scaleX: 1 }}
           transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="h-1 w-32 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg origin-center mb-8"
+          className="h-1 w-48 mx-auto bg-gradient-to-r from-blue-500 to-blue-700 rounded-full shadow-lg origin-center mb-8"
         />
 
         <motion.p
@@ -321,11 +314,11 @@ ai: [
           >
             {/* Logo */}
             <div className="flex justify-center mb-4">
-              <div className="w-16 h-16 flex items-center justify-center rounded-xl bg-gray-50 group-hover:bg-blue-50 transition-colors duration-300">
+              <div className="w-18 h-18 flex items-center justify-center rounded-xl bg-gray-50 group-hover:bg-blue-50 transition-colors duration-300">
                 <img
                   src={tech.logo}
                   alt={tech.name}
-                  className="w-10 h-10 object-contain"
+                  className="w-12 h-12 object-contain"
                   onError={(e) => {
                     e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(tech.name)}&background=3B82F6&color=fff&size=40`;
                   }}
@@ -338,68 +331,13 @@ ai: [
               {tech.name}
             </h3>
 
-            {/* Progress Bar */}
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">Proficiency</span>
-                <span className="text-sm font-semibold text-blue-600">{tech.level}%</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${tech.level}%` }}
-                  transition={{ duration: 1, delay: index * 0.1 }}
-                />
-              </div>
-            </div>
+           
+           
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Bottom Stats */}
-      <motion.div
-        className="mt-20 grid grid-cols-1 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        viewport={{ once: true }}
-      >
-        {[
-          { icon: Layers, number: "50+", label: "Technologies", color: "text-blue-600", bg: "bg-blue-50" },
-          { icon: Zap, number: "5+", label: "Years Experience", color: "text-emerald-600", bg: "bg-emerald-50" },
-          { icon: Settings, number: "100+", label: "Projects Built", color: "text-purple-600", bg: "bg-purple-50" },
-          { icon: Code, number: "24/7", label: "Tech Support", color: "text-orange-600", bg: "bg-orange-50" }
-        ].map((stat, index) => (
-          <motion.div
-            key={index}
-            className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className={`inline-flex items-center justify-center w-16 h-16 ${stat.bg} rounded-2xl mb-4`}>
-              <stat.icon className={`w-8 h-8 ${stat.color}`} />
-            </div>
-            <motion.div
-              className={`text-3xl font-bold ${stat.color} mb-2`}
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 200, 
-                delay: 0.6 + index * 0.1 
-              }}
-              viewport={{ once: true }}
-            >
-              {stat.number}
-            </motion.div>
-            <div className="text-gray-600 font-medium">{stat.label}</div>
-          </motion.div>
-        ))}
-      </motion.div>
+      
     </div>
   );
 };
