@@ -1,152 +1,124 @@
 'use client'
 import React from 'react'
-import { motion } from 'framer-motion'
-import { Cpu, ShoppingBag, MessageSquare, Dumbbell, Plane, BarChart } from 'lucide-react'
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import SectionHeading from './SectionHeading';
+import { useRouter } from 'next/navigation';
 
-import {
-  MinimalCard,
-  MinimalCardDescription,
-  MinimalCardVideo,
-  MinimalCardTitle,
-} from "./ui/minimal-card"
 
 const Projects = () => {
-  const cards = [
-    {
-      title: "Smart Healthcare System",
+  const projects = [
+  {
+      title: "Aakash Life",
       description:
-        "An AI-powered healthcare management platform featuring real-time patient monitoring, predictive analytics for early disease detection, and seamless integration with IoT medical devices. Built with MERN stack and TensorFlow models.",
-      src: "https://www.pexels.com/download/video/7308093.mp4",
-      icon: Cpu,
+        "A wellness and beauty e-commerce platform offering skincare, nutrition, and wellness products from premium brands. Built with Next.js, it delivers a fast and engaging shopping experience.",
+      category: "E-commerce App",
+      imageUrl: "https://images.pexels.com/photos/3585000/pexels-photo-3585000.jpeg",
+      link: "https://aakashlife.com",
     },
+   
     {
-      title: "E-Commerce Platform",
+      title: "Trello",
       description:
-        "A scalable and secure MERN stack-based e-commerce solution with integrated payment gateways, inventory tracking, role-based admin panels, and AI-driven product recommendations to enhance user experience.",
-      src: "https://www.pexels.com/download/video/7191512.mp4",
-      icon: ShoppingBag,
+        "A project management tool that utilizes Next.js for its marketing site, ensuring fast load times and smooth user experience.",
+      category: "Business Website",
+      imageUrl: "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg",
+      link: "https://trello.com",
     },
+    
+  
     {
-      title: "AI Chatbot Solution",
+      title: "Rumusha Clothing Store",
       description:
-        "Conversational AI chatbot using NLP and machine learning to automate customer support, reduce response time, and provide multilingual support across multiple platforms including web and WhatsApp.",
-      src: "https://www.pexels.com/download/video/8937989.mp4",
-      icon: MessageSquare,
+        "A Japanese clothing e-commerce website built with Next.js for the front-end and Shopify for the back-end, offering a seamless shopping experience.",
+      category: "E-commerce App",
+      imageUrl: "https://images.pexels.com/photos/7679865/pexels-photo-7679865.jpeg",
+      link: "https://clothing-store.rashidshamloo.com",
     },
-    {
-      title: "Gym Management System",
-      description:
-        "A complete gym management solution featuring membership tracking, attendance monitoring, AI-powered diet & workout recommendations, and an online course-selling module with integrated Stripe payments.",
-      src: "https://www.pexels.com/download/video/6994866.mp4",
-      icon: Dumbbell,
-    },
-    {
-      title: "Travel Booking Platform",
-      description:
-        "A modern travel booking application with interactive maps, real-time flight & hotel availability, secure payment options, and AI-driven personalized travel recommendations for users.",
-      src: "https://www.pexels.com/download/video/8523642.mp4",
-      icon: Plane,
-    },
-    {
-      title: "Financial Analytics Dashboard",
-      description:
-        "An advanced financial analytics dashboard with data visualization, portfolio tracking, stock predictions using machine learning models, and secure role-based access for businesses.",
-      src: "https://www.pexels.com/download/video/8937990.mp4",
-      icon: BarChart,
-    },
-  ];
+  ]
+
+  const Route= useRouter()
 
   return (
-    <div className="w-full py-16 bg-white overflow-hidden mt-10 px-6 md:px-16">
-      {/* Title */}
- <motion.div
-              className="text-center mb-16"
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true }}
-            >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 tracking-tight">
-                {["Recent", "Projects",].map((word, index) => (
-                  <motion.span
-                    key={word}
-                    initial={{ y: 100, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ 
-                      duration: 0.8, 
-                      delay: 0.4 + index * 0.1,
-                      ease: [0.25, 0.46, 0.45, 0.94]
-                    }}
-                    viewport={{ once: true }}
-                    className="inline-block mr-4 bg-black bg-clip-text text-transparent"
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-              </h1>
-    
+    <section className="py-16 sm:py-20 px-4 sm:px-8">
+      <SectionHeading
+        first="Built"
+        second="With Passion"
+        paragraph="A selection of our recent work across different services."
+      />
+      
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 sm:mt-16 max-w-7xl mx-auto">
+        {projects.map((project, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            whileHover={{ y: -8 }}
+            onClick={() => window.open(project.link, "_blank")}
+
+            className="group bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer"
+          >
+            <div className="relative w-full h-56 sm:h-64 md:h-72 overflow-hidden">
+              <motion.img
+                src={project.imageUrl}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+             
               <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-                viewport={{ once: true }}
-                className="h-1 w-32 mx-auto bg-blue-600 rounded-full shadow-lg origin-center mb-6"
-              />
-    
-              <motion.p
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1 }}
-                viewport={{ once: true }}
-                className="text-gray-600 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileHover={{ opacity: 1, y: 0 }}
+                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
               >
-                From concept to completion, we bring your ideas to life. Here's a glimpse into the projects that define our expertise and dedication.
-               </motion.p>
-            </motion.div>
-
-      {/* Cards Grid */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-        {cards.map((card, index) => {
-          const Icon = card.icon;
-          return (
-            <motion.div
-              key={index}
-              className="group bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              {/* Video */}
-              <MinimalCardVideo
-                className="h-[220px] w-full object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-500"
-                src={card.src}
-                alt={card.title}
-              />
-
-              {/* Content */}
-              <div className="p-6 flex flex-col gap-4">
-                {/* Icon + Title */}
-                <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-blue-100 text-blue-600">
-                    <Icon size={20} />
-                  </div>
-                  <MinimalCardTitle className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                    {card.title}
-                  </MinimalCardTitle>
-                </div>
-
-                {/* Description */}
-                <MinimalCardDescription className="text-gray-600 text-sm leading-relaxed">
-                  {card.description}
-                </MinimalCardDescription>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg shadow-xl hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center gap-2"
+                >
+                  View Project
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </motion.div>
+            </div>
+            <div className="p-6">
+              <h3 className="font-bold text-lg sm:text-xl text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                {project.title}
+              </h3>
+              <p className="text-gray-600 mt-2 text-sm sm:text-base leading-relaxed line-clamp-3">
+                {project.description}
+              </p>
+              <div className="mt-4 flex items-center text-blue-600 font-semibold text-sm group-hover:gap-2 transition-all duration-300">
+                <span>Project</span>
+                <ArrowRight className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
               </div>
-            </motion.div>
-          );
-        })}
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </div>
-  );
-};
+
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="flex justify-center mt-12 sm:mt-16"
+      >
+        <motion.a
+         onClick={()=>(Route.push("/projects"))}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold px-8 py-4 rounded-lg cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 group"
+        >
+          Explore All Projects
+          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+        </motion.a>
+      </motion.div>
+    </section>
+  )
+}
 
 export default Projects;
