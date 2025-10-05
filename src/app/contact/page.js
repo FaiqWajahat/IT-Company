@@ -64,12 +64,11 @@ export default function ContactUs() {
           className="relative z-10 max-w-4xl mx-auto"
         >
           <h1 className="text-3xl pt-4 sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-            Let's Build Something{" "}
+            {"Let's Build Something"}{" "}
             <span className="text-blue-500 block">Amazing Together</span>
           </h1>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-            Have a project in mind? We're here to help you transform your ideas
-            into reality. Get in touch with our team today.
+           {"Have a project in mind? We're here to help you transform your ideas into reality. Get in touch with our team today."}
           </p>
           <motion.a
             href="#contact-form"
@@ -334,8 +333,7 @@ export default function ContactUs() {
             Ready to Start Your Project?
           </h2>
           <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-            Let's discuss how we can help bring your vision to life. Our team is
-            standing by to answer your questions and provide expert guidance.
+           {"Let's discuss how we can help bring your vision to life. Our team is standing by to answer your questions and provide expert guidance."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <motion.a

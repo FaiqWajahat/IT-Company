@@ -86,7 +86,7 @@ export default function ProjectPage() {
             Explore Our Some <span className="text-blue-500 block"> Amazing Projects</span>
           </h1>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-            Discover the innovative projects we've delivered across Website Development, E-commerce Apps, and Graphic Design.
+           {"Discover the innovative projects we've delivered across Website Development, E-commerce Apps, and Graphic Design."}
           </p>
           <motion.a
             href="/contact"

@@ -30,7 +30,7 @@ export default function ConfirmationPage() {
           
           {/* Subtitle */}
           <p className="text-gray-600 text-base sm:text-lg mb-8 max-w-md leading-relaxed">
-            Thank you for reaching out. We've received your message and our team will get back to you shortly.
+           { "Thank you for reaching out. We've received your message and our team will get back to you shortly."}
           </p>
 
           
@@ -54,7 +54,7 @@ export default function ConfirmationPage() {
 
           {/* Additional Info */}
           <p className="text-xs text-gray-500 mt-8">
-            Need immediate assistance? Call us at <span className="font-semibold text-gray-700">(+92) 327-9008806</span>
+            {"Need immediate assistance? Call us at"} <span className="font-semibold text-gray-700">(+92) 327-9008806</span>
           </p>
         </div>
       </div>
