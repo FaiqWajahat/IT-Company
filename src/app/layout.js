@@ -72,6 +72,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+    <meta
+          name="google-site-verification"
+          content="9v1JMAhTFC7LdYhMXfl4tXU36EeJhfMskAG0jTCuvK4"
+        />
+
         {/* ✅ Structured Data (JSON-LD Schema) */}
         <script
           type="application/ld+json"
