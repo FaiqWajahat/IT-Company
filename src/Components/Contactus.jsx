@@ -205,7 +205,7 @@ const Contactus = () => {
   }
 
   const contactInfo = [
-    { icon: Mail, title: "Email", value: "inf@pixvion.com" },
+    { icon: Mail, title: "Email", value: "info@pixvion.com" },
     { icon: Phone, title: "Phone", value: "(+92) 327-9008806" },
     { icon: MapPin, title: "Office", value: "Defence Road, Sialkot, pakistan" }
   ]

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import { Typewriter } from "react-simple-typewriter";
 import animationData from "@/Assets/hero.json"
+import { useRouter } from "next/navigation";
 
 /* ---------------------------
    Lightweight Animated Background
@@ -29,8 +30,11 @@ const Particles = () => {
       })),
     []
   );
-
+  
+ 
+  
   return (
+    
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
       {particles.map((p) => (
         <motion.div
@@ -79,10 +83,12 @@ const Particles = () => {
   );
 };
 
-/* ---------------------------
-   Main Hero Section
----------------------------- */
+
+
+
 const Hero = () => {
+
+   const route =useRouter()
   return (
     <section className="relative w-full min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 lg:px-20 pt-36 md:pt-40 lg:pt-20 pb-20 bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0a0f1f] overflow-hidden">
       {/* Background Layers */}
@@ -140,17 +146,19 @@ const Hero = () => {
           className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4"
         >
           <motion.button
+          onClick={()=>(route.push("/contact"))}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-lg hover:bg-blue-700 transition"
+            className="px-6 py-3 bg-blue-600 cursor-pointer text-white font-medium rounded-lg shadow-lg hover:bg-blue-700 transition"
           >
             Get Started
           </motion.button>
 
           <motion.button
+            onClick={()=>(route.push("/about"))}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 bg-white/10 text-blue-400 font-medium rounded-lg border border-blue-400/50 shadow-md hover:bg-white/20 transition"
+            className="px-6 py-3 bg-white/10 cursor-pointer text-blue-400 font-medium rounded-lg border border-blue-400/50 shadow-md hover:bg-white/20 transition"
           >
             Learn More
           </motion.button>
