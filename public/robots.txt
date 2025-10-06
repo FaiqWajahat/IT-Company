@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://pixvion.com
+
+# Sitemaps
+Sitemap: https://pixvion.com/sitemap.xml
